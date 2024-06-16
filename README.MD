@@ -33,8 +33,17 @@ Each of the auditory models listed below has been developed for different purpos
 | [Cambridge hearing loss simulator (MSBG)](https://github.com/claritychallenge/clarity/tree/main/clarity/evaluator/msbg) | Moore B, Stone M, Baer T, Glasberg B | Nejime Y et al. (1997). *Simulation of the effect of threshold elevation and loudness recruitment combined with reduced frequency selectivity on the intelligibility of speech in noise*. JASA. | MATLAB / Python | Simulates hearing loss on the audio waveform. The Python implementation from the Clarity Challenge is provided. |
 | [ICNet](https://github.com/fotisdr/ICNet) | Drakopoulos F et al. | Drakopoulos F et al. (2024). *ICNet: a novel framework for modeling central auditory processing with high resolution and accuracy*. | Python / Tensorflow | A deep learning model that simulates normal-hearing neural activity in the inferior colliculus in response to a sound input. |
 
-###
 
+----
+
+## Citation
+If you use this code, please cite this repository:
+
+Drakopoulos, F. & Osses, A. (2024). Open-source auditory models of NH and HI processing (v1.0). Zenodo. [https://zenodo.org/doi/10.5281/zenodo.11843926](https://zenodo.org/doi/10.5281/zenodo.11843926)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11843927.svg)](https://doi.org/10.5281/zenodo.11843927)
+
+##
 For questions, please reach out to one of the corresponding authors:
 
 * Fotios Drakopoulos: f.drakopoulos@ucl.ac.uk
