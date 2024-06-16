@@ -1,0 +1,6 @@
+[submodule "Python/clarity"]
+	path = Python/clarity
+	url = https://github.com/claritychallenge/clarity
+[submodule "Python/ICNet"]
+	path = Python/ICNet
+	url = https://github.com/fotisdr/ICNet.git

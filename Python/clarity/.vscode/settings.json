@@ -1,0 +1,19 @@
+{
+    "python.formatting.provider": "black",
+    "cSpell.words": [
+        "haspi",
+        "hasqi"
+    ],
+    "python.testing.pytestArgs": [
+        "tests/",
+        "--cov",
+        "--cov-branch",
+        "--cov-report",
+        "html",
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
+    ],
+}

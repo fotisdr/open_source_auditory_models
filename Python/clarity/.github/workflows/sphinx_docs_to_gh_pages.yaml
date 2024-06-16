@@ -1,0 +1,34 @@
+# Source : https://github.com/marketplace/actions/sphinx-docs-to-github-pages
+name: Sphinx docs to gh-pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sphinx_docs_to_gh-pages:
+    runs-on: ubuntu-latest
+    name: Sphinx docs to gh-pages
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: 3.9
+      - name: Installing the Documentation requirements
+        run: |
+          pip3 install .[docs]
+      - name: Copying recipe README.md
+        run: |
+         rsync -av --exclude-from="docs/recipe_rsync_exclude.txt" recipes docs/.
+      - name: Running Sphinx to gh-pages Action
+        uses: ns-rse/action-sphinx-docs-to-gh-pages@main
+        with:
+          branch: main # Test on branch, switch to main when working
+          dir_docs: docs
+          sphinxapiexclude: '../*setup* ../*tests* ../*.ipynb'
+          sphinxapiopts: '--separate -o . ../'
+          sphinxopts: ''

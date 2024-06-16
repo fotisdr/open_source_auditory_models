@@ -1,0 +1,40 @@
+name: Publish package to PyPi
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    name: Publish package to PyPi
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: 3.9
+      - name: Installing the package
+        run: |
+          pip3 install .
+          pip3 install .[pypi]
+      - name: Build package
+        run: |
+          pip3 install --upgrade setuptools
+          export DEB_PYTHON_INSTALL_LAYOUT=deb_system
+          python -m build --no-isolation
+      - name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.8.3
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Upload release artifacts to Release Notes
+        uses: Roang-zero1/github-upload-release-artifacts-action@v2
+        with:
+          args: "dist/"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
