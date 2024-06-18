@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # ICNet: A deep neural network model of central auditory processing
-# This Jupyter notebook provides a simple usage example for ICNet. Any sound input can be loaded from a wavfile (wavfile_path) and calibrated at a desired level (sound_level) to simulate neural activity in the IC. ICNet transforms the provided sound input (sampled at 24414.0625 Hz) into a neural activity response sampled at 762.9395 Hz. The derived neural response can be adjusted using output_to_simulate. 
+# This notebook provides a simple usage example for ICNet. Any sound input can be loaded from a wavfile (wavfile_path) and calibrated at a desired level (sound_level) to simulate neural activity in the IC. ICNet transforms the provided sound input (sampled at 24414.0625 Hz) into a neural activity response sampled at 762.9395 Hz. The derived neural response can be adjusted using output_to_simulate. 
 # 
 # Fotios Drakopoulos, UCL, June 2024
 
@@ -51,7 +51,7 @@ from matplotlib.ticker import ScalarFormatter
 # Defines the path of a sound file to use as input
 wavfile_path = './scribe_male_talker.wav'
 # Sound intensity in dB SPL - used to calibrate the sound input
-sound_level = 70
+sound_level = 65
 # Frame size to simulate the input in windows (e.g. 8192 samples)
 window_size = 0 # if 0, then the whole sound signal is used
 ## ICNet model
@@ -60,7 +60,7 @@ model_path = 'DNN'
 ## ICNet response
 # Define the output to simulate - can be one of the following:
 # 'units_N': N units selected from all animals to achieve a uniform logarithmic spacing of CFs between CF_min and CF_max (defined below) - N = {1,...,4446} 
-# 'animal_random' or 'animal_X': neural activity of a random animal (or a given animal X = {1,...,9}) 
+# 'animal_random' or 'animal_X': neural activity of a random animal (or a given animal X = {1,...,9}) - can also be used to speed up execution
 # 'bottleneck': the response of the ICNet bottleneck
 output_to_simulate = 'units_1000' # simulate 1000 units from all animals
 # Recording time input for the ICNet model - can be set to anything between 0 and 11 hours to provide a stationary output
@@ -108,6 +108,8 @@ context_size = params['context_size'] # context to be added to the audio input (
 
 # Read the wavfile and resample to the model sampling frequency
 audio_input, _ = wavfile_read(wavfile_path, fs_audio) # if an fs argument is provided, the wavfile gets resampled
+# Keep a 3 second segment of the signal for demonstration purposes (between 20 and 23 s)
+audio_input = audio_input[int(20*fs_audio):int(23*fs_audio)]
 # Calibrate to the desired sound level
 audio_input = p0 * 10**(sound_level/20) * audio_input / rms(audio_input)
 # Add context, segment to windows (if needed) and reshape into a 3D array
@@ -115,6 +117,8 @@ audio_input = slice_1dsignal(audio_input, window_size, winshift = window_size, l
 # The audio input needs to be a multiple of 32
 if audio_input.shape[1] % 32:
     audio_input = pad_along_1dimension(audio_input,0,32 - (audio_input.shape[1] % 32), axis=1) # right padding with zeros
+# Change the data type of the audio input (float32 is enough)
+audio_input = audio_input.astype(np.float32)
 
 
 # ## Simulate the ICNet responses
@@ -149,7 +153,7 @@ t_MUA = np.arange(0., ICNet_response.shape[0]/fs_MUA, 1./fs_MUA)
 
 
 # Time range to plot
-time_range = [20.5,21.5] # seconds
+time_range = [0.5,1.5] # seconds
 
 
 # In[11]:

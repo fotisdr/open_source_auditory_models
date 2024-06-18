@@ -259,10 +259,13 @@ audio_input_hl = resample_and_filter(audio_output_hl, fs_audio, fs_audio_icnet)
 # Add context, segment to windows (if needed) and shape into 3D arrays
 audio_input_nh = slice_1dsignal(audio_input_nh, window_size = 0, winshift = 0, left_context = context_size)
 audio_input_hl = slice_1dsignal(audio_input_hl, window_size = 0, winshift = 0, left_context = context_size)
-# The audio input needs to be a multiple of 32 (without context)
+# The audio input needs to be a multiple of 32
 if audio_input_nh.shape[1] % 32:
     audio_input_nh = pad_along_1dimension(audio_input_nh,0,32 - (audio_input_nh.shape[1] % 32), axis=1) # right padding with zeros
     audio_input_hl = pad_along_1dimension(audio_input_hl,0,32 - (audio_input_hl.shape[1] % 32), axis=1) # right padding with zeros
+# Change the data type of the audio input (float32 is enough)
+audio_input_nh = audio_input_nh.astype(np.float32)
+audio_input_hl = audio_input_hl.astype(np.float32)
 
 
 # In[18]:

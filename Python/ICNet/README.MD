@@ -1,11 +1,11 @@
 ## ICNet: A deep neural network model of central auditory processing
 
-This repository contains the source code of the ICNet model and an example Jupyter notebook `ICNet_example.ipynb` that can be used to simulate neural activity in the inferior colliculus (IC) in response to a sound stimulus. The supporting work can be found on [bioRxiv]() and can be cited as follows:
-> Drakopoulos, F., Sabesan, S., Xia, Y., Fragner, A. & Lesica, N. A. (2024). ICNet: a novel framework for modeling central auditory processing with high resolution and accuracy. 
+This repository contains the source code of the ICNet model and an example Jupyter notebook `ICNet_example.ipynb` that can be used to simulate neural activity in the inferior colliculus (IC) in response to a sound stimulus. A Google Colab version of the notebook can also be found [here](https://colab.research.google.com/drive/1tUw2u55TCYLq7qGxfzPOr611fAdCH4UU) and can be executed without a local Python installation. The supporting work can be found on [bioRxiv]() and can be cited as follows:
+> Drakopoulos, F., Sabesan, S., Xia, Y., Fragner, A. & Lesica, N. A. (2024). Modeling neural coding in the auditory brain with high resolution and accuracy. 
 
 The *DNN* folder contains the deep-neural-network (DNN) architecture, weights and configuration parameters of the pre-trained ICNet model. The *src* folder contains all the supplementary Python functions to execute ICNet. This repository also contains an example sound file `scribe_male_talker.wav` from the [UCL SCRIBE dataset](http://www.phon.ucl.ac.uk/resource/scribe), a pre-compiled Python version of the provided Jupyter notebook `ICNet_example.py`, this `README.MD` document and a license file. 
 
-ICNet was developed to describe the shared sound encoding across a set of 9 normal-hearing gerbils. The `output_to_simulate` variable in the example Jupyter notebook can be adjusted to simulate neural activity of individual animals (e.g. `output_to_simulate='animal_random'` for a random animal), to generate neural responses using units from all 9 animals (e.g. `output_to_simulate='units_1000'` for 1000 neural units selected from all animals with logarithmic spacing of CFs along the IC), or to derive the response of the shared bottleneck layer for use as a front-end (`output_to_simulate='bottleneck'`). The characteristic frequencies (CFs) of all neural units are included in the *DNN* folder to simulate neural responses that reflect the tonotopic organization of the IC.
+ICNet was developed to describe the shared sound encoding across a set of 9 normal-hearing gerbils. The `output_to_simulate` variable in the example notebook can be adjusted to simulate neural activity of individual animals (e.g. `output_to_simulate='animal_random'` for a random animal), to generate neural responses using units from all 9 animals (e.g. `output_to_simulate='units_1000'` for 1000 neural units selected from all animals with logarithmic spacing of CFs along the IC), or to derive the response of the shared bottleneck layer for use as a front-end (`output_to_simulate='bottleneck'`). The characteristic frequencies (CFs) of all neural units are included in the *DNN* folder to simulate neural responses that reflect the tonotopic organization of the IC.
 
 <p align="left">
     <img src="DNN/ICNet_overview.png" alt="ICNet Model Overview" height="75%" width="75%">
@@ -29,9 +29,9 @@ The first two commands are used to create (and activate) a new conda environment
 ## Citation
 If you use this code, please cite the corresponding paper or this repository:
 
-<!--- Fotios Drakopoulos, Andreas Fragner, & Nicholas A Lesica. (2023). ICNet: A deep neural network model of central auditory processing (v1.0). Zenodo. https://doi.org/XXX
+Drakopoulos, F., Fragner, A. & Lesica, N. A. (2024). ICNet: A DNN model of central auditory processing (v1.0). Zenodo. [https://zenodo.org/doi/10.5281/zenodo.11842064](https://zenodo.org/doi/10.5281/zenodo.11842064).
 
-[![DOI](https://zenodo.org/badge/DOI/XXX.svg)](https://doi.org/XXX) --->
+[![DOI](https://zenodo.org/badge/812637835.svg)](https://zenodo.org/doi/10.5281/zenodo.11842064)
 
 ##
 For questions, please reach out to one of the corresponding authors:
