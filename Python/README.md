@@ -30,4 +30,4 @@ The `VCCA_demo.ipynb` notebook includes the example code for the Python demonstr
 
 - **1st Clarity Enhancement Challenge**: Graetzer, S. N. et al. (2021). Clarity-2021 challenges: Machine learning challenges for advancing hearing aid processing. In Proceedings of the Annual Conference of the International Speech Communication Association, INTERSPEECH (Vol. 2). [https://doi.org/10.21437/Interspeech.2021-1574](https://doi.org/10.21437/Interspeech.2021-1574)
 
-- **ICNet model**: Drakopoulos, F. et al. (2024). Modeling neural coding in the auditory brain with high resolution and accuracy.
+- **ICNet model**: Drakopoulos, F. et al. (2024). Modeling neural coding in the auditory brain with high resolution and accuracy. bioRxiv, 2024.06.17.599294. [https://doi.org/10.1101/2024.06.17.599294](https://doi.org/10.1101/2024.06.17.599294)
